@@ -6,12 +6,12 @@
 
 class Drawable
 {
-  public:
-    virtual ~Drawable() noexcept = default;
+public:
+  virtual ~Drawable() noexcept = default;
 
-    friend class Display;
-  private:
-    virtual void __draw(const DISPLAY_INSTANCE *const) const noexcept = 0;
+  friend class Display;
+private:
+  virtual void __draw(DISPLAY_INSTANCE *) const noexcept = 0;
 };
 
 #endif

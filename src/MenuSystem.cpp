@@ -30,7 +30,7 @@ void MenuSystem::moveCursor(int direction) noexcept
 void MenuSystem::click() noexcept
 {
   if(this->__cursor_index >= this->__options.getSize()) return;
-  Option *option = this->__options.at(this->__cursor_index);
+  const Option *option = this->__options.at(this->__cursor_index);
   if(option)
     option->onClick();
 }
@@ -44,7 +44,7 @@ MenuSystem::~MenuSystem() noexcept
 {
 }
 
-void MenuSystem::__draw(const DISPLAY_INSTANCE *U8G) const noexcept
+void MenuSystem::__draw(DISPLAY_INSTANCE *U8G) const noexcept
 {
 	const int total = this->__options.getSize();
   if(total == 0) return;

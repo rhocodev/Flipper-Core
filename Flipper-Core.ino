@@ -57,7 +57,6 @@ void create_pages()
 {
   Page::home.onLoop = []() {
     moveCursorWithButtons(Menu::home);
-
     display.firstPage(); do
     {
       display.draw(Menu::home);
@@ -73,7 +72,6 @@ void create_pages()
 
   Page::tools.onLoop = []() {
     moveCursorWithButtons(Menu::tools);
-
     display.firstPage(); do
     {
       display.draw(Menu::tools);

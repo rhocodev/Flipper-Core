@@ -8,15 +8,15 @@ class Transformable
 public:
 	Transformable() noexcept;
 
-	virtual void setX(const uint8_t) noexcept;
-	virtual void setY(const uint8_t) noexcept;
+	virtual void setX(const uint8_t) const noexcept;
+	virtual void setY(const uint8_t) const noexcept;
 	const uint8_t &getX() const noexcept;
 	const uint8_t &getY() const noexcept;
 
 	virtual ~Transformable() noexcept;
 	
 private:
-	uint8_t __x, __y;
+	mutable uint8_t __x, __y;
 };
 
 #endif

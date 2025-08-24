@@ -29,7 +29,7 @@ Image::~Image() noexcept
 {
 }
 
-void Image::__draw(const DISPLAY_INSTANCE *const U8G) const noexcept
+void Image::__draw(DISPLAY_INSTANCE *U8G) const noexcept
 {
 	// TODO - Deixar o tamanho variável
 	U8G->drawXBMP(this->getX(), this->getY(), 10, 10, this->__data);

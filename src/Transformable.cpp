@@ -6,11 +6,11 @@ Transformable::Transformable() noexcept
 	this->setY(0);
 }
 
-void Transformable::setX(const uint8_t x) noexcept
+void Transformable::setX(const uint8_t x) const noexcept
 {
 	this->__x = x;
 }
-void Transformable::setY(const uint8_t y) noexcept
+void Transformable::setY(const uint8_t y) const noexcept
 {
 	this->__y = y;
 }

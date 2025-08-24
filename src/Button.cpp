@@ -4,7 +4,7 @@ Button::Button() noexcept
   : __pin {0}, __is_pressed {false}
 {
 }
-Button::Button(const int pin)
+Button::Button(const int pin) noexcept
   : __is_pressed {false}
 {
   this->setPin(pin);

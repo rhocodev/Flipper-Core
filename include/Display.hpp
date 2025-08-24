@@ -6,17 +6,17 @@
 
 class Display
 {
-  public:
-    Display() noexcept;
+public:
+  Display() noexcept;
 
-    void setup() noexcept;
-    void draw(const Drawable&) const noexcept;
-    void firstPage() noexcept;
-    const int nextPage() noexcept;
+  void setup() noexcept;
+  void draw(const Drawable&) const noexcept;
+  void firstPage() noexcept;
+  const int nextPage() noexcept;
 
-    ~Display() noexcept;
-  private:
-    DISPLAY_INSTANCE *__u8g;
+  ~Display() noexcept;
+private:
+  DISPLAY_INSTANCE *__u8g;
 };
 
 #endif

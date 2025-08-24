@@ -14,7 +14,7 @@ public:
 private:
   String __text;
 
-  void __draw(const DISPLAY_INSTANCE *const) const noexcept override;
+  void __draw(DISPLAY_INSTANCE *) const noexcept;
 };
 
 #endif
