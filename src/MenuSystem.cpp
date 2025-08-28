@@ -31,6 +31,7 @@ void MenuSystem::click() noexcept
 {
   if(this->__cursor_index >= this->__options.getSize()) return;
   const Option *option = this->__options.at(this->__cursor_index);
+
   if(option)
     option->onClick();
 }

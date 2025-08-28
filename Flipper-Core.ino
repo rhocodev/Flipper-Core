@@ -1,48 +1,35 @@
 #include "F-Core.hpp"
 
-#define FN_SWITCH(page) []() { switchPage(page); }
-
-Display display;
-Activity
-  *current_activity = nullptr,
-  *pending_activity = nullptr;
+Timer button_timer;
 
 namespace Menu
 {
-  MenuSystem home, tools;
+  MenuSystem
+    home, tools;
 };
 
 namespace Control
 {
-  Button down(2), enter(4), up(8);
+  Button
+    down(2), enter(4), up(8);
 };
 
 namespace Page
 {
-  Activity home, tools;
+  Activity
+    home, tools;
 };
 
 void moveCursorWithButtons(MenuSystem &menu)
 { 
-  if(Control::enter.isPressed()) menu.click();
+  if(Control::enter.isPressed() && button_timer.getMillis() > 250)
+  {
+    menu.click();
+    button_timer.reset();
+  }
+
   if(Control::down.isPressed()) menu.moveCursor(1);
   if(Control::up.isPressed()) menu.moveCursor(-1);
-}
-
-void switchPage(Activity &page)
-{
-  pending_activity = &page;
-}
-
-void processPendingSwitch()
-{
-  if (!pending_activity) return;
-  if (current_activity != nullptr) current_activity->onReset();
-
-  current_activity = pending_activity;
-  pending_activity = nullptr;
-
-  if (current_activity != nullptr) current_activity->onSetup();
 }
 
 void boot_system()
@@ -63,8 +50,8 @@ void create_pages()
     } while(display.nextPage());
   };
   Page::home.onSetup = []() {
-      Menu::home.addOption(Option("Tools", Icon::TOOLS, FN_SWITCH(Page::tools)));
-      Menu::home.addOption(Option("Upgrade", Icon::UPGRADE));
+    Menu::home.addOption(Option("Tools", Icon::TOOLS, FN_SWITCH(Page::tools)));
+    Menu::home.addOption(Option("Upgrade", Icon::UPGRADE));
   };
   Page::home.onReset = []() {
     Menu::home.flush();
@@ -96,8 +83,8 @@ void create_pages()
 
 void setup()
 {
-  create_pages();
   boot_system();
+  create_pages();
 }
 
 void loop()

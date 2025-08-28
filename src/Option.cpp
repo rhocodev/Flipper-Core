@@ -1,6 +1,6 @@
 #include "Option.hpp"
 
-Option::Option(const String label, uint8_t *icon) noexcept
+Option::Option(const String label, const uint8_t *icon) noexcept
 {
 	this->setLabel(label);
 	this->setIcon(icon);
@@ -8,7 +8,7 @@ Option::Option(const String label, uint8_t *icon) noexcept
 	this->setY(0);
 	this->onClick = [](){};
 }
-Option::Option(const String label, uint8_t *icon, void (*onClick)()) noexcept
+Option::Option(const String label, const uint8_t *icon, void (*onClick)()) noexcept
 	: Option(label, icon)
 {
 	this->onClick = onClick;
@@ -22,7 +22,7 @@ const String &Option::getLabel() const noexcept
 {
 	return this->__label;
 }
-void Option::setIcon(uint8_t *icon) noexcept
+void Option::setIcon(const uint8_t *icon) noexcept
 {
 	this->__icon = icon;
 }

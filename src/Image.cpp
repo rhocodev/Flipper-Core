@@ -5,6 +5,8 @@ Image::Image(const uint8_t *const data) noexcept
 	this->__data = data;
 	this->setX(0);
 	this->setY(0);
+	this->setWidth(10);
+	this->setHeight(10);
 }
 
 
@@ -31,6 +33,5 @@ Image::~Image() noexcept
 
 void Image::__draw(DISPLAY_INSTANCE *U8G) const noexcept
 {
-	// TODO - Deixar o tamanho variável
-	U8G->drawXBMP(this->getX(), this->getY(), 10, 10, this->__data);
+	U8G->drawXBMP(this->getX(), this->getY(), this->getWidth(), this->getHeight(), this->__data);
 }
