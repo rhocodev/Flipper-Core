@@ -1,6 +1,6 @@
 #include "F-Core.hpp"
 
-Timer button_timer;
+Timer button_timer, fps_timer;
 
 namespace Menu
 {
@@ -89,7 +89,12 @@ void setup()
 
 void loop()
 {
-  processPendingSwitch();
-  if(current_activity)
-    current_activity->onLoop();
+  if(fps_timer.getMillis() > 1000 / FPS)
+  {
+    processPendingSwitch();
+    if(current_activity)
+      current_activity->onLoop();
+    
+    fps_timer.reset();
+  }
 }

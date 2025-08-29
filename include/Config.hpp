@@ -21,9 +21,9 @@
 #define MAX_OPTIONS_BY_PAGE 5
 #define MAX_OPTIONS_BY_MENU 7
 #define DISPLAY_HEIGHT 64
-#define DISPLAY_WgTIDTH 128
+#define DISPLAY_WIDTH 128
 #define OPTIONS_GAP 1
 #define CURSOR_MARGIN_BOTTOM 3
-#define FPS 1000 / 30
+#define FPS 30
 
 #endif
